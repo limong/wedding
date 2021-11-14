@@ -6,25 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>lim&kim wedding sharing page</title>
-  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="description" content="임정인 & 김진호 결혼 합니다.">
   <meta name="author" content="SitePoint">
 
-  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:title" content="Wedding Day, LIM JUNGIN & KIM JINHO">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-  <meta property="og:description" content="A simple HTML5 Template for new projects.">
-  <meta property="og:image" content="image.png">
+  <meta property="og:url" content="https://limong.github.io/wedding/index.html">
+  <meta property="og:description" content="임정인 & 김진호 결혼 합니다. 2022년 1월 9일 일요일 3시, 노보텔 앰베서더 강남">
+  <meta property="og:image" content="/assets/img/01-thumb.jpg">
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
+  <link rel="icon" href="/assets/img/01-thumb.jpg">
+  <link rel="apple-touch-icon" href="/assets/img/01-thumb.jpg">
+  <style>
+    a {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        font-size: 40px;
+        color: black;
+    }
+    a:link { color: black; text-decoration: none;}
+    a:visited { color: black; text-decoration: none;}
+    a:hover { color: black; text-decoration: underline;}
+    a.kakao {
+    background-color: yellow;
+    }
+    a.line {
+    background-color:greenyellow;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- your content here... -->
-  <script src="js/scripts.js"></script>
+    <a href="#" class="kakao">카카오 링크보내기</a>
+    <br />
+    <br />
+    <br />
+    <a href="#" class="line">라인 링크보내기</a>
 </body>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- Kakao API -->
+<script>
+    Kakao.init('2c2535b46f3d7e0b7edc9dc9808fca45'); //6번 항목에서 발급 받았던 javascript key를 여기에 넣는다.
+ 
+    document.querySelector(".btn").addEventListener('click', function(e) {
+        e.preventDefault();   //이벤트 버블링 prevent
+        
+        Kakao.Link.sendCustom({
+            templateId: 65238   // 15번 항목에서 확인하였던 이벤트번호 등록 
+        });
+    }, false);
+</script>
 </html>
