@@ -47,14 +47,189 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- Kakao API -->
 <script>
-    Kakao.init('2c2535b46f3d7e0b7edc9dc9808fca45'); //6번 항목에서 발급 받았던 javascript key를 여기에 넣는다.
- 
-    document.querySelector(".kakao").addEventListener('click', function(e) {
-        e.preventDefault();   //이벤트 버블링 prevent
-        
-        Kakao.Link.sendCustom({
-            templateId: 65238   // 15번 항목에서 확인하였던 이벤트번호 등록 
-        });
-    }, false);
+  Kakao.init('2c2535b46f3d7e0b7edc9dc9808fca45'); //6번 항목에서 발급 받았던 javascript key를 여기에 넣는다.
+
+  document.querySelector(".kakao").addEventListener('click', function(e) {
+      e.preventDefault();   //이벤트 버블링 prevent
+      
+      Kakao.Link.sendCustom({
+          templateId: 65238   // 15번 항목에서 확인하였던 이벤트번호 등록 
+      });
+  }, false);
+
+  var flexMessage = {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "md",
+      "action": {
+        "type": "uri",
+        "uri": "https://linecorp.com"
+      },
+      "contents": [
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "image",
+              "url": "https://limong.github.io/wedding/assets/img/line1.jpg",
+              "size": "5xl",
+              "aspectMode": "cover",
+              "aspectRatio": "150:196",
+              "flex": 1
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://limong.github.io/wedding/assets/img/line2.jpg",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "150:98"
+                },
+                {
+                  "type": "image",
+                  "url": "https://limong.github.io/wedding/assets/img/line3.jpg",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "150:98",
+                  "gravity": "center"
+                }
+              ],
+              "flex": 1
+            }
+          ],
+          "spacing": "none"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "🌈경축 임정인❤️김진호 결혼 🌱",
+              "size": "lg",
+              "weight": "bold",
+              "margin": "sm"
+            },
+            {
+              "type": "text",
+              "text": "두 사람의 새로운 시작을 축하해 주세요.",
+              "color": "#aaaaaa",
+              "wrap": true,
+              "size": "sm",
+              "margin": "sm"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": []
+            }
+          ],
+          "paddingStart": "20px",
+          "paddingEnd": "20px",
+          "paddingTop": "10px"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "일시",
+                  "weight": "bold",
+                  "margin": "sm",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "2022년 1월 9일 일요일 3시",
+                  "size": "sm",
+                  "align": "end",
+                  "color": "#aaaaaa"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "장소",
+                  "weight": "bold",
+                  "margin": "sm",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "노보텔앰베서더 강남",
+                  "size": "sm",
+                  "align": "end",
+                  "color": "#aaaaaa"
+                }
+              ]
+            }
+          ],
+          "paddingStart": "20px",
+          "paddingEnd": "20px",
+          "paddingTop": "10px",
+          "paddingBottom": "10px"
+        }
+      ],
+      "paddingAll": "0px"
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "style": "link",
+          "color": "#905c44",
+          "action": {
+            "type": "uri",
+            "label": "청첩장 보러가기",
+            "uri": "https://bojagicard.com/cuteddalki1"
+          },
+          "margin": "none"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "참석 여부 알려주기",
+            "uri": "https://naver.me/529DMERK"
+          },
+          "style": "link",
+          "color": "#905c44"
+        }
+      ],
+      "margin": "none"
+    }
+  };
+
+  document.querySelector(".line").addEventListener('click', function(e) {
+    e.preventDefault();   //이벤트 버블링 prevent
+      
+    fetch("https://api.line.me/v2/bot/message/push", {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(flexMessage), // data can be `string` or {object}!
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': 'apeGTAXtWM19PzQGYtJlu/L4cPImTgv9wtmIQ30F6wnTquBVm758+Zok8FphAbNbWp434KvS+oRBAA53iGcbDUCK4fhoBoC5kFZB2VigzJubGK2yK4WVwC1n+4ZULiYF474t3zqDDvwol6WqQiDmjgdB04t89/1O/w1cDnyilFU='
+      }
+    });
+  }, false);
+
 </script>
 </html>
