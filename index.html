@@ -42,7 +42,7 @@
     <br />
     <br />
     <br />
-    <a href="#" class="line">라인 링크보내기</a>
+    <a href="#" class="line" style="display:none">라인 링크보내기</a>
 </body>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- Kakao API -->
@@ -220,9 +220,14 @@
 
   document.querySelector(".line").addEventListener('click', function(e) {
     e.preventDefault();   //이벤트 버블링 prevent
-
-    location.href = `https://line.me/R/share?text=test123`;
-
+    // location.href = `https://line.me/R/share?text=test123`;
+    liff.sendMessages([flexMessage])
+      .then(() => {
+        console.log('message sent');
+      })
+      .catch((err) => {
+        console.log('error', err);
+      });
     // location.href = `https://line.me/R/share?text=${JSON.stringify(flexMessage)}`
       
     // fetch("https://api.line.me/v2/bot/message/push", {
@@ -230,10 +235,24 @@
     //   body: JSON.stringify(flexMessage), // data can be `string` or {object}!
     //   headers:{
     //     'Content-Type': 'application/json',
-    //     'Authorization': 'apeGTAXtWM19PzQGYtJlu/L4cPImTgv9wtmIQ30F6wnTquBVm758+Zok8FphAbNbWp434KvS+oRBAA53iGcbDUCK4fhoBoC5kFZB2VigzJubGK2yK4WVwC1n+4ZULiYF474t3zqDDvwol6WqQiDmjgdB04t89/1O/w1cDnyilFU='
+    //     'Authorization': accessToken
     //   }
     // });
   }, false);
+
+  liff
+    .init({
+      liffId: "1656631022-EQZPegWz" // Use own liffId
+    })
+    .then(() => {
+      // Start to use liff's api
+      document.querySelector('.line').style.display = '';
+    })
+    .catch((err) => {
+      // Error happens during initialization
+      console.log(err.code, err.message);
+    });
+
 
 </script>
 </html>
