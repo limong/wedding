@@ -49,7 +49,7 @@
 <script>
     Kakao.init('2c2535b46f3d7e0b7edc9dc9808fca45'); //6번 항목에서 발급 받았던 javascript key를 여기에 넣는다.
  
-    document.querySelector(".btn").addEventListener('click', function(e) {
+    document.querySelector(".kakao").addEventListener('click', function(e) {
         e.preventDefault();   //이벤트 버블링 prevent
         
         Kakao.Link.sendCustom({
