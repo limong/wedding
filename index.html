@@ -220,15 +220,19 @@
 
   document.querySelector(".line").addEventListener('click', function(e) {
     e.preventDefault();   //이벤트 버블링 prevent
+
+    location.href = `https://line.me/R/share?text=test123`;
+
+    // location.href = `https://line.me/R/share?text=${JSON.stringify(flexMessage)}`
       
-    fetch("https://api.line.me/v2/bot/message/push", {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(flexMessage), // data can be `string` or {object}!
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization': 'apeGTAXtWM19PzQGYtJlu/L4cPImTgv9wtmIQ30F6wnTquBVm758+Zok8FphAbNbWp434KvS+oRBAA53iGcbDUCK4fhoBoC5kFZB2VigzJubGK2yK4WVwC1n+4ZULiYF474t3zqDDvwol6WqQiDmjgdB04t89/1O/w1cDnyilFU='
-      }
-    });
+    // fetch("https://api.line.me/v2/bot/message/push", {
+    //   method: 'POST', // or 'PUT'
+    //   body: JSON.stringify(flexMessage), // data can be `string` or {object}!
+    //   headers:{
+    //     'Content-Type': 'application/json',
+    //     'Authorization': 'apeGTAXtWM19PzQGYtJlu/L4cPImTgv9wtmIQ30F6wnTquBVm758+Zok8FphAbNbWp434KvS+oRBAA53iGcbDUCK4fhoBoC5kFZB2VigzJubGK2yK4WVwC1n+4ZULiYF474t3zqDDvwol6WqQiDmjgdB04t89/1O/w1cDnyilFU='
+    //   }
+    // });
   }, false);
 
 </script>
